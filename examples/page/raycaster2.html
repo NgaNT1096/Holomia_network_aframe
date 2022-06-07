@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <script>
+  AFRAME.registerComponent('cursor-listener', {
+    init: function () {
+      this.el.addEventListener('raycaster-intersected', evt => {
+        this.raycaster = evt.detail.el;
+      });
+      this.el.addEventListener('raycaster-intersected-cleared', evt => {
+        this.raycaster = null;
+      });
+    },
+    tick: function () {
+        if (!this.raycaster) { return; }  // Not intersecting.
+        let intersection = this.raycaster.components.raycaster.getIntersection(this.el);
+        if (!intersection) { return; } // Not intersecting
+        // intersecting
+        console.log(intersection);
+    }
+  });
+  </script>
+  <a-scene id="scene">
+    <a-entity cursor="rayOrigin: mouse" raycaster="objects: .cursor-listener"></a-entity>
+    
+    <a-plane
+        position="0 1.6 -1"
+        height="2"
+        width="1.5"
+        color="red"
+        class="cursor-listener"
+        cursor-listener
+        id="element"
+      ></a-plane>
+  </a-scene>
+</body>
