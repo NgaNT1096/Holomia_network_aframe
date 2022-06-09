@@ -8,9 +8,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.slim.js"></script>
     <script src="../../easyrtc/easyrtc.js"></script>
     <script src="../dist/networked-aframe.js"></script>
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <script src="/assets/js/extended-wasd-controls.js"></script>
-    <script src="/assets/js/joystick.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/extended-wasd-controls.js"></script>
+    <script src="../assets/js/joystick.js"></script>
     <script>
       // see issue https://github.com/networked-aframe/networked-aframe/issues/267
       NAF.schemas.getComponentsOriginal = NAF.schemas.getComponents;
@@ -178,9 +178,9 @@
     <!-- bottom-left -->
 	<div class="regionUI" style="bottom: 20px; right: 10px;">
 		<div class="buttonUI" style="width: 128px;  opacity:0.80;">
-			<img src="/assets/text_ture/joystick-base.png"/>
+			<img src="../assets/text_ture/joystick-base.png"/>
 			<div id="stick1" style="position: absolute; left:32px; top:32px;">
-			<img src="/assets/text_ture/joystick-red.png"/>		
+			<img src="../assets/text_ture/joystick-red.png"/>		
 			</div>
 		</div>
 	</div>
@@ -196,18 +196,19 @@
 	</div> -->
 
     <a-scene networked-scene="
-      serverURL:https://delightful-flawless-telescope.glitch.me/;
-      room: dev;
+      
+      room: basic;
       debug: true;
-      adapter: wseasyrtc;
+      adapter: easyrtc;
+      serverURL:ws://delightful-flawless-telescope.glitch.me;
     " screen-controls>
     <!-- data assets -->
       <a-assets>
 
         <img id="grid" src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" crossorigin="anonymous">
         <img id="sky" src="https://i.imgur.com/WqlqEkq.jpg" crossorigin="anonymous" />
-        <a-asset-item id="avatar" src="/assets/model/avatar/Woman.glb"></a-asset-item>
-        <a-asset-item id="village" src="/assets/model/VC.glb"></a-asset-item>
+        <a-asset-item id="avatar" src="../assets/model/avatar/Woman.glb"></a-asset-item>
+        <a-asset-item id="village" src="../assets/model/VC.glb"></a-asset-item>
         <template id="avatar-template">
           <a-entity class="avatar" gltf-model="#avatar" player-info>
             <a-text look-at="#player" class="nametag" value="?" rotation="0 0 0" position=".25 -.35 0" side="double" scale=".5 .5 .5"></a-text>
